@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{%block page_title%}author details here{%endblock%}
+{%block content%}
+<h1>Author details here</h1>
+<ul>
+{%for authors in author%}
+
+<li><h1>{{authors}}</h1></li>
+
+{%endfor%}
+</ul>
+{%endblock%}
