@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block page_title %} Author Details  {% endblock %}
+
+{% block style %}
+    <style>
+        .author{
+            align-items: center;
+            color: blue;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+
+    <div class="author ">
+<<<<<<< HEAD
+       
+        <h3> Full Name : {{text.first_name}} {{text.last_name}}  </h3> 
+        <h3> Age : {{text.age}} </h3>
+        <h3> Cite : {{text.city}} </h3>
+        <h3> Rating : {{text.rating}}    </h3>
+        
+=======
+       👋 
+        <h3> Full Name : {{text.first_name}} {{text.last_name}}  😊</h3> 
+        <h3> Age : {{text.age}} 👱</h3>
+        <h3> Cite : {{text.city}} 📍</h3>
+        <h3> Rating : {{text.rating}}  🤩   </h3>
+        <h3> Slug : {{text.slug}}  🤩   </h3>
+        😁
+>>>>>>> c16875dff18e17c347d271cfc7f665766114d9df
+    </div>
+
+{% endblock %}

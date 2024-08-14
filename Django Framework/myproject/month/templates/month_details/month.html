@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+{% block page_title %} {{mon}} {% endblock %}
+{% block style %} 
+
+<style>
+    b{
+        color: blue;
+    }
+    i{
+        color: red;
+    }
+</style>
+
+{% endblock %}
+{% block content %}
+
+    <h2>In This <b>'{{mon}}'</b> We <i>'{{text}}'</i></h2>
+    {% endblock %}

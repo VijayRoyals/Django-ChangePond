@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block page_title %} Index {% endblock %}
+{% block style %} {% endblock %}
+{% block content %}
+<h1>Welcome To VIJAY KUMAR InfoTech </h1>
+    <hr>
+    
+    <ul>
+
+        {% for mon in month %}
+        <li><h3><a href="{{mon}}"> {{mon}} </a></h3></li>
+        {% endfor %}
+
+    </ul>
+    <hr>
+    <ol>
+
+        {% for mon in month %}
+        <li><h3><a href='{% url "month-detail"  mon %}'> {{mon}} </a></h3></li>
+        {% endfor %}
+
+    </ol>
+    
+    <hr>
+    
+
+    {% endblock %}
