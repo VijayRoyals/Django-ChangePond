@@ -6,11 +6,11 @@
 <ul>
     <h1> Author Details </h1>
     {% for auth in author %}
-<<<<<<< HEAD
+
         <li><h2><a href='{% url "author-detail"  auth.slug %}''>{{auth.first_name}} </a> </h2></li>
-=======
-        <li><h2><a href='{% url "author-detail"  auth.slug %}''>{{auth.first_name}}</a> </h2></li>
->>>>>>> c16875dff18e17c347d271cfc7f665766114d9df
+
+        {% comment %} <li><h2><a href='{% url "author-detail"  auth.slug %}''>{{auth.first_name}}</a> </h2></li> {% endcomment %}
+
     {% endfor %} 
 
 
