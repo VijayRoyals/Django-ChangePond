@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %} All Post {% endblock %}
+
+{% block CssFilePage %} 
+  <link rel='stylesheet' href="{% static 'index.css' %}">
+  <link rel="icon" href="/media/images/ak.jpg">
+{% endblock %}
+
+{% block header %}
+  {% include "portfolio/includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="element text-center">All Posts</h2>
+  <div class="row">
+    {% for user in users %}
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-light rounded">
+        <img src="{{ user.img_url.url }}" class="card-img-top custom-image-size" alt="{{ user.img_title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ user.content }}</h5>
+          <p class="card-text">{{ user.read_more|truncatewords:20 }}</p>
+          <a href="{% url 'user-detail' user.id %}" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+

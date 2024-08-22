@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %} Author Details {% endblock %}
+
+{% block CssFilePage %}
+<link rel='stylesheet' href="{% static 'index.css' %}">
+<link rel="icon" href="/media/images/ak.jpg">
+{% endblock %}
+
+{% block header %}
+  {% include "portfolio/includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h2 class="element text-center">{{ text.content }}</h2>
+  <div class="row">
+    <div class="col-md-8 mx-auto mb-4">
+      <div class="card border-light shadow-sm rounded">
+        <img src="{{ text.img_url.url }}" class="card-img-top rounded-top" alt="{{ text.img_title }}">
+        <div class="card-body">
+          <h5 class="card-title mb-3"><b>About Blog:</b> {{ text.content }}</h5>
+          <p class="card-text"><b>Full Name:</b> {{ text.first_name }} {{ text.last_name }}</p>
+          <p class="card-text"><b>Age:</b> {{ text.age }}</p>
+          <p class="card-text"><b>City:</b> {{ text.city }}</p>
+          <p class="card-text"><b>Created At:</b> {{ text.created_at }}</p>
+          <p class="card-text"><b>Date:</b> {{ text.event_date }}</p>
+          <p class="card-text"><b>Time:</b> {{ text.event_time }}</p>
+          <p class="card-text"><b>More About:</b></p>
+          <div class="px-4 py-2 bg-light border rounded">
+            {{ text.read_more }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %} Home {% endblock %}
+
+{% block CssFilePage %}
+<link rel='stylesheet' href="{% static 'index.css' %}">
+<link rel="icon" href="/media/images/ak.jpg">
+{% endblock %}
+
+{% block header %}
+  {% include "portfolio/includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<h2 class="intro">Intro About Vijay Kumar</h2>
+
+<div class="row mt-3 mb-5">
+  <div class="col-md-12">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-light">
+      <!-- bg-light is a Bootstrap class for a light background color -->
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-info">Technology Enthusiast</strong>
+        <h3 class="mb-0">About Vijay Kumar</h3>
+        <div class="mb-1 text-muted">Aug 20, 2024</div>
+        <div class="p-4">
+          Hi, I'm <strong>Vijay Kumar</strong>, a dedicated software engineer with a passion for technology and innovation. Currently, I'm associated with Changepond Technologies, where I contribute to cutting-edge projects and drive technological advancements.
+          <br><br>
+          At Changepond Technologies, I work on various software solutions ranging from web development to enterprise applications. My role involves collaborating with cross-functional teams to deliver high-quality products that meet client needs and industry standards.
+          <br><br>
+          My expertise spans across modern web technologies, including React, Angular, and backend frameworks like Node.js and Django. I am committed to continuous learning and professional growth to stay ahead in the rapidly evolving tech landscape.
+        </div>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img src="/media/images/vijay1.jpg" class="p-2" width="300" height="320" alt="Vijay Kumar">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h2 class="element">Latest Posts</h2>
+
+<div class="container mt-5">
+  <div class="row">
+    {% for user in users %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <!-- Rounded corners with Bootstrap utility class -->
+        <img src="{{ user.img_url.url }}" class="card-img-top custom-image-size" alt="{{ user.img_title }}">
+        <div class="card-body">
+          <p class="card-text"><b>{{ user.content }}</b></p>
+          <a href="{% url 'user-detail' user.id %}" class="btn btn-secondary">Read More</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
+
+

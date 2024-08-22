@@ -1,0 +1,24 @@
+ul{
+    box-shadow: 0px 2px 8px #ff0000;
+    border: 2rem;
+    margin: 5%;
+}
+
+.custom-image-size {
+    width: 300px;
+    height: 200px;
+    object-fit: cover; 
+    padding: 7px;
+    border-radius: .8rem !important;
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+    object-fit: cover; 
+    padding: 7px;
+    border-radius: 50%;
+}
+.intro { 
+    text-align: center;
+}
