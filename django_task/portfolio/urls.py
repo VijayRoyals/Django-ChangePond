@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     path('', views.landing_page,name='landing-page'),
     path('<int:id>', views.user_details_id,name='user-detail'),
-
     path('all-post', views.all_post,name='all-post'),
+    path('forms', views.formViews.as_view(), name="forms"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
@@ -53,8 +54,9 @@
                         <a class="nav-link {% if request.path == '/all-post' %}active fw-bold{% endif %}"
                            href="{% url 'all-post' %}">All Posts</a>
                     </li>
+                 
                     <li class="nav-item">
-                        {% comment %} <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">About Us</a> {% endcomment %}
+                        <a href="{% url "forms" %}" class="nav-link" tabindex="-1"="true">Forms</a>
                     </li>
                     <li class="nav-item">
                         {% comment %} <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contact Us</a> {% endcomment %}

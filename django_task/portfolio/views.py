@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from . models import portfolio_detail
 from django.http import *
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -49,5 +50,11 @@ def user_details_id(request,id):
     
     return render(request,'portfolio/user_detail.html',context)
 
-   
-   
+
+
+class formViews(CreateView):
+    model = portfolio_detail
+    template_name = "portfolio/portfolio_list.html"
+    success_url = "/forms"
+    fields = "__all__"
+    

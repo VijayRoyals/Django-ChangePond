@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_title %}Portfolio Form{% endblock %}
+
+
+{% block CssFilePage %}
+<link rel="stylesheet" href="{% static 'forms.css' %}">
+<link rel="icon" href="/media/images/logoimage.jpg">
+{% endblock %}
+
+
+{% block header %}
+{% include "portfolio/includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary">Submit Your Portfolio Details</h2>
+
+    <!-- Form Section -->
+    <div class="card shadow-lg p-4 bg-white rounded">
+        <h3 class="card-header text-center text-white bg-primary">Submit Your Details</h3>
+        <div class="card-body">
+            <form action="/forms" method="post" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+
+                <!-- First Name Field -->
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" name="first_name" class="form-control {% if form.first_name.errors %}is-invalid{% elif form.first_name.value %}is-valid{% endif %}" id="firstName" value="{{ form.first_name.value|default_if_none:'' }}">
+                    {% if form.first_name.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.first_name.errors.0 }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Last Name Field -->
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" name="last_name" class="form-control {% if form.last_name.errors %}is-invalid{% elif form.last_name.value %}is-valid{% endif %}" id="lastName" value="{{ form.last_name.value|default_if_none:'' }}">
+                    {% if form.last_name.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.last_name.errors.0 }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Age Field -->
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" name="age" class="form-control {% if form.age.errors %}is-invalid{% elif form.age.value %}is-valid{% endif %}" id="age" value="{{ form.age.value|default_if_none:'' }}">
+                    {% if form.age.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.age.errors.0 }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- City Field -->
+                <div class="mb-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" name="city" class="form-control {% if form.city.errors %}is-invalid{% elif form.city.value %}is-valid{% endif %}" id="city" value="{{ form.city.value|default_if_none:'' }}">
+                    {% if form.city.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.city.errors.0 }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Content Field -->
+                <div class="mb-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea name="content" class="form-control {% if form.content.errors %}is-invalid{% elif form.content.value %}is-valid{% endif %}" id="content" rows="4">{{ form.content.value|default_if_none:'' }}</textarea>
+                    {% if form.content.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.content.errors.0 }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Read More URL Field -->
+                <div class="mb-3">
+                    <label for="readMore" class="form-label">Read More </label>
+                    <input type="url" name="read_more" class="form-control {% if form.read_more.errors %}is-invalid{% elif form.read_more.value %}is-valid{% endif %}" id="readMore" value="{{ form.read_more.value|default_if_none:'' }}">
+                    {% if form.read_more.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.read_more.errors.0 }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Event Date and Time Fields -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="eventDate" class="form-label">Event Date</label>
+                        <input type="date" name="event_date" class="form-control {% if form.event_date.errors %}is-invalid{% elif form.event_date.value %}is-valid{% endif %}" id="eventDate" value="{{ form.event_date.value|default_if_none:'' }}">
+                        {% if form.event_date.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.event_date.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="eventTime" class="form-label">Event Time</label>
+                        <input type="time" name="event_time" class="form-control {% if form.event_time.errors %}is-invalid{% elif form.event_time.value %}is-valid{% endif %}" id="eventTime" value="{{ form.event_time.value|default_if_none:'' }}">
+                        {% if form.event_time.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.event_time.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Image Title and Upload Field -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="imgTitle" class="form-label">Image Title</label>
+                        <input type="text" name="img_title" class="form-control {% if form.img_title.errors %}is-invalid{% elif form.img_title.value %}is-valid{% endif %}" id="imgTitle" value="{{ form.img_title.value|default_if_none:'' }}">
+                        {% if form.img_title.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.img_title.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="imgUrl" class="form-label">Upload Image</label>
+                        <input type="file" name="img_url" class="form-control {% if form.img_url.errors %}is-invalid{% elif form.img_url.value %}is-valid{% endif %}" id="imgUrl">
+                        {% if form.img_url.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.img_url.errors.0 }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-block">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Entries Section -->
+    
+    <ul class="list-group">
+        {% for detail in details %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ detail.first_name }} {{ detail.last_name }}</h5>
+                    <p class="mb-1">Age: {{ detail.age }}</p>
+                    <p class="mb-1">City: {{ detail.city }}</p>
+                    <p class="mb-1">Content: {{ detail.content }}</p>
+                    <a href="{{ detail.read_more }}" target="_blank" class="text-decoration-none text-primary">Read more</a>
+                    <p class="mb-1">Event Date: {{ detail.event_date }}</p>
+                    <p class="mb-1">Event Time: {{ detail.event_time }}</p>
+                    <p class="mb-1">Image Title: {{ detail.img_title }}</p>
+                </div>
+                <div>
+                    {% if detail.img_url %}
+                    <img src="{{ detail.img_url.url }}" alt="{{ detail.img_title }}" class="img-fluid rounded shadow-sm" style="width: 100px;">
+                    {% else %}
+                    <span class="text-muted">No image available</span>
+                    {% endif %}
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
