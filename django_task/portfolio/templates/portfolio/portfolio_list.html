@@ -3,12 +3,10 @@
 
 {% block page_title %}Portfolio Form{% endblock %}
 
-
 {% block CssFilePage %}
 <link rel="stylesheet" href="{% static 'forms.css' %}">
 <link rel="icon" href="/media/images/logoimage.jpg">
 {% endblock %}
-
 
 {% block header %}
 {% include "portfolio/includes/header.html" %}
@@ -16,18 +14,19 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center mb-4 text-primary">Submit Your Portfolio Details</h2>
+    <h2 class="text-center mb-4 text-black">Submit Your Portfolio Details</h2>
 
     <!-- Form Section -->
-    <div class="card shadow-lg p-4 bg-white rounded">
-        <h3 class="card-header text-center text-white bg-primary">Submit Your Details</h3>
-        <div class="card-body">
+    <div class="card shadow-sm p-3 bg-white rounded" style="max-width: 600px; margin: auto;">
+        <h3 class="card-header text-center text-white bg-dark py-2">Submit Your Details</h3>
+        <div class="card-body p-3">
             <form action="/forms" method="post" enctype="multipart/form-data" novalidate>
                 {% csrf_token %}
 
                 <!-- First Name Field -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="firstName" class="form-label">First Name</label>
+                    
                     <input type="text" name="first_name" class="form-control {% if form.first_name.errors %}is-invalid{% elif form.first_name.value %}is-valid{% endif %}" id="firstName" value="{{ form.first_name.value|default_if_none:'' }}">
                     {% if form.first_name.errors %}
                     <div class="invalid-feedback">
@@ -37,7 +36,7 @@
                 </div>
 
                 <!-- Last Name Field -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="lastName" class="form-label">Last Name</label>
                     <input type="text" name="last_name" class="form-control {% if form.last_name.errors %}is-invalid{% elif form.last_name.value %}is-valid{% endif %}" id="lastName" value="{{ form.last_name.value|default_if_none:'' }}">
                     {% if form.last_name.errors %}
@@ -48,7 +47,7 @@
                 </div>
 
                 <!-- Age Field -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="age" class="form-label">Age</label>
                     <input type="number" name="age" class="form-control {% if form.age.errors %}is-invalid{% elif form.age.value %}is-valid{% endif %}" id="age" value="{{ form.age.value|default_if_none:'' }}">
                     {% if form.age.errors %}
@@ -59,7 +58,7 @@
                 </div>
 
                 <!-- City Field -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="city" class="form-label">City</label>
                     <input type="text" name="city" class="form-control {% if form.city.errors %}is-invalid{% elif form.city.value %}is-valid{% endif %}" id="city" value="{{ form.city.value|default_if_none:'' }}">
                     {% if form.city.errors %}
@@ -70,9 +69,9 @@
                 </div>
 
                 <!-- Content Field -->
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="content" class="form-label">Content</label>
-                    <textarea name="content" class="form-control {% if form.content.errors %}is-invalid{% elif form.content.value %}is-valid{% endif %}" id="content" rows="4">{{ form.content.value|default_if_none:'' }}</textarea>
+                    <textarea name="content" class="form-control {% if form.content.errors %}is-invalid{% elif form.content.value %}is-valid{% endif %}" id="content" rows="3">{{ form.content.value|default_if_none:'' }}</textarea>
                     {% if form.content.errors %}
                     <div class="invalid-feedback">
                         {{ form.content.errors.0 }}
@@ -81,8 +80,8 @@
                 </div>
 
                 <!-- Read More URL Field -->
-                <div class="mb-3">
-                    <label for="readMore" class="form-label">Read More </label>
+                <div class="mb-2">
+                    <label for="readMore" class="form-label">Read More</label>
                     <input type="url" name="read_more" class="form-control {% if form.read_more.errors %}is-invalid{% elif form.read_more.value %}is-valid{% endif %}" id="readMore" value="{{ form.read_more.value|default_if_none:'' }}">
                     {% if form.read_more.errors %}
                     <div class="invalid-feedback">
@@ -92,8 +91,8 @@
                 </div>
 
                 <!-- Event Date and Time Fields -->
-                <div class="row">
-                    <div class="col-md-6 mb-3">
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
                         <label for="eventDate" class="form-label">Event Date</label>
                         <input type="date" name="event_date" class="form-control {% if form.event_date.errors %}is-invalid{% elif form.event_date.value %}is-valid{% endif %}" id="eventDate" value="{{ form.event_date.value|default_if_none:'' }}">
                         {% if form.event_date.errors %}
@@ -103,7 +102,7 @@
                         {% endif %}
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6">
                         <label for="eventTime" class="form-label">Event Time</label>
                         <input type="time" name="event_time" class="form-control {% if form.event_time.errors %}is-invalid{% elif form.event_time.value %}is-valid{% endif %}" id="eventTime" value="{{ form.event_time.value|default_if_none:'' }}">
                         {% if form.event_time.errors %}
@@ -115,8 +114,8 @@
                 </div>
 
                 <!-- Image Title and Upload Field -->
-                <div class="row">
-                    <div class="col-md-6 mb-3">
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
                         <label for="imgTitle" class="form-label">Image Title</label>
                         <input type="text" name="img_title" class="form-control {% if form.img_title.errors %}is-invalid{% elif form.img_title.value %}is-valid{% endif %}" id="imgTitle" value="{{ form.img_title.value|default_if_none:'' }}">
                         {% if form.img_title.errors %}
@@ -126,7 +125,7 @@
                         {% endif %}
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6">
                         <label for="imgUrl" class="form-label">Upload Image</label>
                         <input type="file" name="img_url" class="form-control {% if form.img_url.errors %}is-invalid{% elif form.img_url.value %}is-valid{% endif %}" id="imgUrl">
                         {% if form.img_url.errors %}
@@ -137,6 +136,30 @@
                     </div>
                 </div>
 
+                <div class="mb-2">
+                    <label for="author" class="form-label">Author</label>
+                    {{form.author}}
+                    {% comment %} <input type="url" name="author" class="form-control {% if form.author.errors %}is-invalid{% elif form.author.value %}is-valid{% endif %}" id="author" value="{{ form.author.value|default_if_none:'' }}">
+                    {% if form.author.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.author.errors.0 }}
+                    </div>
+                    {% endif %} {% endcomment %}
+                </div>
+
+                <div class="mb-2">
+                    <label for="tags" class="form-label">Tags </label>
+                    {{form.tags}}
+                    {% comment %} <input type="url" name="tags" class="form-control {% if form.tags.errors %}is-invalid{% elif form.tags.value %}is-valid{% endif %}" id="tags" value="{{ form.tags.value|default_if_none:'' }}">
+                    {% if form.tags.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.tags.errors.0 }}
+                    </div>
+                    {% endif %} {% endcomment %}
+                </div>
+
+                
+
                 <!-- Submit Button -->
                 <div class="d-grid">
                     <button type="submit" class="btn btn-success btn-block">Save</button>
@@ -146,8 +169,7 @@
     </div>
 
     <!-- Entries Section -->
-    
-    <ul class="list-group">
+    <ul class="list-group mt-4">
         {% for detail in details %}
         <li class="list-group-item">
             <div class="d-flex justify-content-between align-items-center">

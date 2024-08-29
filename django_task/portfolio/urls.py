@@ -10,4 +10,5 @@ urlpatterns = [
     path('all-post', views.all_post,name='all-post'),
     path('forms', views.formViews.as_view(), name="forms"),
 
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
